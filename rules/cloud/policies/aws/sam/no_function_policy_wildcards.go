@@ -1,20 +1,13 @@
 package sam
 
 import (
-	"strings"
-
-	"github.com/aquasecurity/defsec/pkg/providers/aws/iam"
+	"github.com/aquasecurity/defsec/pkg/providers"
+	"github.com/aquasecurity/defsec/pkg/scan"
 	"github.com/aquasecurity/defsec/pkg/severity"
-
 	"github.com/aquasecurity/defsec/pkg/state"
 
-	"github.com/aquasecurity/defsec/pkg/scan"
-
 	"github.com/aquasecurity/trivy-policies/pkg/rules"
-
-	"github.com/aquasecurity/defsec/pkg/providers"
-
-	"github.com/liamg/iamgo"
+	"github.com/aquasecurity/trivy-policies/rules/cloud/policies/aws"
 )
 
 var CheckNoFunctionPolicyWildcards = rules.Register(
@@ -38,76 +31,17 @@ var CheckNoFunctionPolicyWildcards = rules.Register(
 		},
 		Severity: severity.High,
 	},
-	func(s *state.State) (results scan.Results) {
+	func(s *state.State) scan.Results {
+		checker := aws.PolicyChecker{}
+
+		var results scan.Results
 
 		for _, function := range s.AWS.SAM.Functions {
 			if function.Metadata.IsUnmanaged() {
 				continue
 			}
-
-			for _, document := range function.Policies {
-				policy := document.Document.Parsed
-				statements, _ := policy.Statements()
-				for _, statement := range statements {
-					results = checkStatement(document.Document, statement, results)
-				}
-			}
+			results = append(results, checker.CheckWildcards(function.Policies)...)
 		}
-		return
+		return results
 	},
 )
-
-func checkStatement(document iam.Document, statement iamgo.Statement, results scan.Results) scan.Results {
-	effect, _ := statement.Effect()
-	if effect != iamgo.EffectAllow {
-		return results
-	}
-	actions, r := statement.Actions()
-	for _, action := range actions {
-		if strings.Contains(action, "*") {
-			results.Add(
-				"Policy document uses a wildcard action.",
-				document.MetadataFromIamGo(statement.Range(), r),
-			)
-		} else {
-			results.AddPassed(document)
-		}
-	}
-	resources, r := statement.Resources()
-	for _, resource := range resources {
-		if strings.Contains(resource, "*") {
-			if ok, _ := iam.IsWildcardAllowed(actions...); !ok {
-				if strings.HasSuffix(resource, "/*") && strings.HasPrefix(resource, "arn:aws:s3") {
-					continue
-				}
-				results.Add(
-					"Policy document uses a wildcard resource for sensitive action(s).",
-					document.MetadataFromIamGo(statement.Range(), r),
-				)
-			} else {
-				results.AddPassed(document)
-			}
-		} else {
-			results.AddPassed(document)
-		}
-	}
-	principals, _ := statement.Principals()
-	if all, r := principals.All(); all {
-		results.Add(
-			"Policy document uses a wildcard principal.",
-			document.MetadataFromIamGo(statement.Range(), r),
-		)
-	}
-	aws, r := principals.AWS()
-	for _, principal := range aws {
-		if strings.Contains(principal, "*") {
-			results.Add(
-				"Policy document uses a wildcard principal.",
-				document.MetadataFromIamGo(statement.Range(), r),
-			)
-		} else {
-			results.AddPassed(document)
-		}
-	}
-	return results
-}

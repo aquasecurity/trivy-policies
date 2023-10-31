@@ -6,6 +6,7 @@ import (
 	"github.com/aquasecurity/defsec/pkg/severity"
 	"github.com/aquasecurity/defsec/pkg/state"
 	"github.com/aquasecurity/trivy-policies/pkg/rules"
+	"github.com/aquasecurity/trivy-policies/rules/cloud/policies/aws"
 )
 
 var CheckNoStateMachinePolicyWildcards = rules.Register(
@@ -29,21 +30,17 @@ var CheckNoStateMachinePolicyWildcards = rules.Register(
 		},
 		Severity: severity.High,
 	},
-	func(s *state.State) (results scan.Results) {
+	func(s *state.State) scan.Results {
+		checker := aws.PolicyChecker{}
+
+		var results scan.Results
 
 		for _, stateMachine := range s.AWS.SAM.StateMachines {
 			if stateMachine.Metadata.IsUnmanaged() {
 				continue
 			}
-
-			for _, document := range stateMachine.Policies {
-				policy := document.Document.Parsed
-				statements, _ := policy.Statements()
-				for _, statement := range statements {
-					results = checkStatement(document.Document, statement, results)
-				}
-			}
+			results = append(results, checker.CheckWildcards(stateMachine.Policies)...)
 		}
-		return
+		return results
 	},
 )
