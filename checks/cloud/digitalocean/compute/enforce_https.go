@@ -33,6 +33,9 @@ You should use HTTPS, which is HTTP over an encrypted (TLS) connection, meaning 
 	},
 	func(s *state.State) (results scan.Results) {
 		for _, lb := range s.DigitalOcean.Compute.LoadBalancers {
+			if lb.RedirectHttpToHttps.IsTrue() {
+				continue
+			}
 			for _, rule := range lb.ForwardingRules {
 				if rule.EntryProtocol.EqualTo("http") {
 					results.Add(

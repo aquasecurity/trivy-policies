@@ -53,6 +53,24 @@ func TestCheckEnforceHttps(t *testing.T) {
 			},
 			expected: false,
 		},
+		{
+			name: "Load balancer forwarding rule using HTTP, but HTTP redirection to HTTPS is enabled",
+			input: compute.Compute{
+				LoadBalancers: []compute.LoadBalancer{
+					{
+						Metadata:            defsecTypes.NewTestMetadata(),
+						RedirectHttpToHttps: defsecTypes.Bool(true, defsecTypes.NewTestMetadata()),
+						ForwardingRules: []compute.ForwardingRule{
+							{
+								Metadata:      defsecTypes.NewTestMetadata(),
+								EntryProtocol: defsecTypes.String("http", defsecTypes.NewTestMetadata()),
+							},
+						},
+					},
+				},
+			},
+			expected: false,
+		},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
