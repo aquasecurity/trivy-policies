@@ -3,15 +3,11 @@ package iam
 import (
 	"testing"
 
-	defsecTypes "github.com/aquasecurity/defsec/pkg/types"
-
-	"github.com/aquasecurity/defsec/pkg/state"
-
 	"github.com/aquasecurity/defsec/pkg/providers/aws/iam"
 	"github.com/aquasecurity/defsec/pkg/scan"
-
+	"github.com/aquasecurity/defsec/pkg/state"
+	defsecTypes "github.com/aquasecurity/defsec/pkg/types"
 	"github.com/liamg/iamgo"
-
 	"github.com/stretchr/testify/assert"
 )
 
@@ -315,6 +311,47 @@ func TestCheckNoPolicyWildcards(t *testing.T) {
 			} else {
 				assert.False(t, found, "Rule should not have been found")
 			}
+		})
+	}
+}
+
+func TestIsObjectKeyContainsWildcard(t *testing.T) {
+	tests := []struct {
+		name     string
+		resource string
+		expected bool
+	}{
+		{
+			name:     "all s3 objects",
+			resource: "arn:aws:s3:::examplebucket/*",
+			expected: true,
+		},
+		{
+			name:     "wildcard in object key",
+			resource: "arn:aws:s3:::examplebucket/*/test.log",
+			expected: true,
+		},
+		{
+			name:     "Not S3 ARN",
+			resource: "arn:aws:cloudwatch:*:123456789012:alarm/*",
+			expected: false,
+		},
+		{
+			name:     "all S3 buckets and objects",
+			resource: "arn:aws:s3:::*",
+			expected: false,
+		},
+		{
+			name:     "non-valid ARN",
+			resource: "test",
+			expected: false,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := isObjectKeyContainsWildcard(tt.resource)
+			assert.Equal(t, tt.expected, got)
 		})
 	}
 }

@@ -6,18 +6,12 @@ import (
 	"strings"
 
 	"github.com/aquasecurity/defsec/pkg/framework"
-
-	"github.com/aquasecurity/defsec/pkg/providers/aws/iam"
-	"github.com/aquasecurity/defsec/pkg/severity"
-
-	"github.com/aquasecurity/defsec/pkg/state"
-
-	"github.com/aquasecurity/defsec/pkg/scan"
-
-	"github.com/aquasecurity/trivy-policies/pkg/rules"
-
 	"github.com/aquasecurity/defsec/pkg/providers"
-
+	"github.com/aquasecurity/defsec/pkg/providers/aws/iam"
+	"github.com/aquasecurity/defsec/pkg/scan"
+	"github.com/aquasecurity/defsec/pkg/severity"
+	"github.com/aquasecurity/defsec/pkg/state"
+	"github.com/aquasecurity/trivy-policies/pkg/rules"
 	"github.com/liamg/iamgo"
 )
 
@@ -126,7 +120,7 @@ func checkStatement(src iam.Document, statement iamgo.Statement, results scan.Re
 	for _, resource := range resources {
 		if strings.Contains(resource, "*") {
 			if allowed, action := iam.IsWildcardAllowed(actions...); !allowed {
-				if strings.HasSuffix(resource, "/*") && strings.HasPrefix(resource, "arn:aws:s3") {
+				if isObjectKeyContainsWildcard(resource) {
 					continue
 				}
 				if cloudwatchLogStreamResourceRegex.MatchString(resource) {
@@ -164,4 +158,22 @@ func checkStatement(src iam.Document, statement iamgo.Statement, results scan.Re
 	}
 
 	return results
+}
+
+func isObjectKeyContainsWildcard(arn string) bool {
+	// https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html
+	// arn:partition:service:region:account-id:resource-id
+	arnParts := strings.SplitN(arn, ":", 6)
+
+	if len(arnParts) != 6 || arnParts[2] != "s3" {
+		return false
+	}
+
+	resourceParts := strings.SplitN(arnParts[5], "/", 2)
+	if len(resourceParts) != 2 {
+		return false
+	}
+
+	return !strings.ContainsRune(resourceParts[0], '*') && strings.ContainsRune(resourceParts[1], '*')
+
 }
