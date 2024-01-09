@@ -9,7 +9,7 @@
 # custom:
 #   id: KSV014
 #   avd_id: AVD-KSV-0014
-#   severity: LOW
+#   severity: HIGH
 #   short_code: use-readonly-filesystem
 #   recommended_action: "Change 'containers[].securityContext.readOnlyRootFilesystem' to 'true'."
 #   input:
