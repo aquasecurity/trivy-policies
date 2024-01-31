@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS006
 
 import data.lib.docker
+import data.lib.result
 
 get_alias_from_copy[output] {
 	copies := docker.stage_copies[stage]

@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS015
 
 import data.lib.docker
+import data.lib.result
 
 get_yum[output] {
 	run := docker.run[_]

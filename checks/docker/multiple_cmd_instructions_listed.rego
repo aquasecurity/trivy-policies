@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS016
 
 import data.lib.docker
+import data.lib.result
 
 deny[res] {
 	cmds := docker.stage_cmd[name]

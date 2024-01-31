@@ -18,6 +18,7 @@
 package builtin.kubernetes.KSV047
 
 import data.lib.kubernetes
+import data.lib.result
 import data.lib.utils
 
 readVerbs := ["get", "create"]

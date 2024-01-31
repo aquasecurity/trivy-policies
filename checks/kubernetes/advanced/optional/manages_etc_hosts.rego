@@ -25,6 +25,7 @@
 package builtin.kubernetes.KSV007
 
 import data.lib.kubernetes
+import data.lib.result
 import data.lib.utils
 
 # failHostAliases is true if spec.hostAliases is set (on all controllers)

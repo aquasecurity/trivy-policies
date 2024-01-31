@@ -18,6 +18,7 @@
 package builtin.kubernetes.KCV0065
 
 import data.lib.kubernetes
+import data.lib.result
 
 validate_conf_ownership(sp) := {"controllerManagerConfFileOwnership": violation} {
 	sp.kind == "NodeInfo"

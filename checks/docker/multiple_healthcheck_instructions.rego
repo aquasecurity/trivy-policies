@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS023
 
 import data.lib.docker
+import data.lib.result
 
 deny[res] {
 	healthchecks := docker.stage_healthcheck[name]

@@ -18,6 +18,7 @@
 package builtin.kubernetes.KCV0067
 
 import data.lib.kubernetes
+import data.lib.result
 
 validate_pki_key_permission(sp) := {"kubePKIKeyFilePermissions": violation} {
 	sp.kind == "NodeInfo"

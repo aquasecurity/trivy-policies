@@ -18,6 +18,7 @@
 package builtin.kubernetes.KSV01010
 
 import data.lib.kubernetes
+import data.lib.result
 
 # More patterns can be added here, adding more patterns may lead to performance issue
 # some patterns are taken from https://github.com/americanexpress/earlybird/blob/d0b63538c1acbb5ab0cacf0541df5ea088d45d70/config/content.json

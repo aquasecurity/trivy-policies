@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS009
 
 import data.lib.docker
+import data.lib.result
 
 get_work_dir[output] {
 	workdir := docker.workdir[_]

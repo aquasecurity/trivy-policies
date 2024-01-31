@@ -18,6 +18,7 @@
 package builtin.kubernetes.KCV0056
 
 import data.lib.kubernetes
+import data.lib.result
 
 validate_cni_permission(sp) := {"containerNetworkInterfaceFilePermissions": violation} {
 	sp.kind == "NodeInfo"

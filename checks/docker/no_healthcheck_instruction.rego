@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS026
 
 import data.lib.docker
+import data.lib.result
 
 deny[res] {
 	count(docker.healthcheck) == 0

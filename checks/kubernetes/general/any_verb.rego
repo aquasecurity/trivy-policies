@@ -18,6 +18,7 @@
 package builtin.kubernetes.KSV045
 
 import data.lib.kubernetes
+import data.lib.result
 import data.lib.utils
 
 resourceRead := ["secrets", "pods", "deployments", "daemonsets", "statefulsets", "replicationcontrollers", "replicasets", "cronjobs", "jobs", "roles", "clusterroles", "rolebindings", "clusterrolebindings", "users", "groups"]

@@ -1,6 +1,7 @@
 package builtin.kubernetes.KSV002
 
 import data.lib.kubernetes
+import data.lib.result
 
 test_custom_deny {
 	r := deny with input as {

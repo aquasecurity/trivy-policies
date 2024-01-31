@@ -2,6 +2,7 @@ package defsec.kubernetes.KSV107
 
 import data.k8s
 import data.lib.kubernetes
+import data.lib.result
 import data.lib.utils
 
 __rego_metadata__ := {

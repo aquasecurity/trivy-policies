@@ -18,6 +18,7 @@
 package builtin.kubernetes.KCV0066
 
 import data.lib.kubernetes
+import data.lib.result
 
 validate_pki_directory_ownership(sp) := {"kubePKIDirectoryFileOwnership": violation} {
 	sp.kind == "NodeInfo"

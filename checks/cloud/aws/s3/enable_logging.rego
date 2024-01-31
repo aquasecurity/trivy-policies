@@ -27,6 +27,8 @@
 #       good_examples: "checks/cloud/aws/s3/enable_bucket_logging.cf.go"
 package builtin.aws.s3.aws0089
 
+import data.lib.result
+
 deny[res] {
 	bucket := input.aws.s3.buckets[_]
 	not bucket.acl.value == "log-delivery-write"

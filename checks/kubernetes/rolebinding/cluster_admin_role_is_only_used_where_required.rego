@@ -21,6 +21,7 @@
 package builtin.kubernetes.KSV111
 
 import data.lib.kubernetes
+import data.lib.result
 
 readRoleRefs := ["cluster-admin", "admin", "edit"]
 

@@ -21,6 +21,8 @@
 #           provider: aws
 package builtin.aws.rds.aws0177
 
+import data.lib.result
+
 deny[res] {
 	instance := input.aws.rds.instances[_]
 	not instance.deletionprotection.value

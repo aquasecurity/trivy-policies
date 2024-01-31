@@ -18,6 +18,7 @@
 package builtin.kubernetes.KCV0084
 
 import data.lib.kubernetes
+import data.lib.result
 
 types := ["master", "worker"]
 

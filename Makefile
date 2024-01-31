@@ -4,12 +4,17 @@ DYNAMIC_REGO_FOLDER=./checks/kubernetes/policies/dynamic
 test:
 	go test -v ./...
 
+
 .PHONY: rego
-rego: fmt-rego
+rego: fmt-rego test-rego
+
+.PHONY: test-rego
+test-rego: 
+	opa test checks/ lib/
 
 .PHONY: fmt-rego
 fmt-rego:
-	opa fmt -w checks/
+	opa fmt -w checks/ lib/
 
 .PHONY: bundle
 bundle: create-bundle verify-bundle

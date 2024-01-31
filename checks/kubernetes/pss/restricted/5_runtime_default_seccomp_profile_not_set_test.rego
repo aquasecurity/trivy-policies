@@ -1,6 +1,7 @@
 package builtin.kubernetes.KSV030
 
 import data.lib.kubernetes
+import data.lib.result
 
 test_pod_context_custom_profile_denied {
 	r := deny with input as {

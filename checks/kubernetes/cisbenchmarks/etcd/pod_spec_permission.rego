@@ -18,6 +18,7 @@
 package builtin.kubernetes.KCV0054
 
 import data.lib.kubernetes
+import data.lib.result
 
 validate_spec_permission(sp) := {"kubeEtcdSpecFilePermission": violation} {
 	sp.kind == "NodeInfo"

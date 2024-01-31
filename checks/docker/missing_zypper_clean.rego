@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS020
 
 import data.lib.docker
+import data.lib.result
 
 install_regex := `(zypper in)|(zypper remove)|(zypper rm)|(zypper source-install)|(zypper si)|(zypper patch)|(zypper (-(-)?[a-zA-Z]+ *)*install)`
 

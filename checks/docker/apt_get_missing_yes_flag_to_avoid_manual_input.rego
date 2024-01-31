@@ -19,6 +19,7 @@
 package builtin.dockerfile.DS021
 
 import data.lib.docker
+import data.lib.result
 
 deny[res] {
 	output := get_apt_get[_]

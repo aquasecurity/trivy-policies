@@ -16,6 +16,7 @@
 package builtin.dockerfile.DS001
 
 import data.lib.docker
+import data.lib.result
 
 # returns element after AS
 get_alias(values) = alias {

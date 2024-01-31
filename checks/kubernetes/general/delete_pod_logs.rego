@@ -21,6 +21,7 @@
 package builtin.kubernetes.KSV042
 
 import data.lib.kubernetes
+import data.lib.result
 import data.lib.utils
 
 readVerbs := ["delete", "deletecollection", "*"]

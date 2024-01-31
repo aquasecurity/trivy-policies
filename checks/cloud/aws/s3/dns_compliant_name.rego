@@ -22,6 +22,8 @@
 #           provider: aws
 package builtin.aws.s3.aws0320
 
+import data.lib.result
+
 deny[res] {
 	bucket := input.aws.s3.buckets[_]
 	indexof(bucket.name.value, ".") != -1

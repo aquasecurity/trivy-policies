@@ -25,6 +25,7 @@
 package builtin.kubernetes.KSV033
 
 import data.lib.kubernetes
+import data.lib.result
 import data.lib.utils
 
 default failTrustedGCRRegistry = false

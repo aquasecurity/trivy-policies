@@ -27,6 +27,7 @@
 package builtin.kubernetes.KSV024
 
 import data.lib.kubernetes
+import data.lib.result
 
 default failHostPorts = false
 

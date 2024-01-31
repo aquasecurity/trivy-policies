@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS025
 
 import data.lib.docker
+import data.lib.result
 
 get_apk[output] {
 	run := docker.run[_]

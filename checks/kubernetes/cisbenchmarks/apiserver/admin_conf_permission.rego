@@ -18,6 +18,7 @@
 package builtin.kubernetes.KCV0060
 
 import data.lib.kubernetes
+import data.lib.result
 
 validate_conf_permission(sp) := {"adminConfFilePermissions": violation} {
 	sp.kind == "NodeInfo"

@@ -27,6 +27,7 @@
 package builtin.kubernetes.KSV103
 
 import data.lib.kubernetes
+import data.lib.result
 import data.lib.utils
 
 failHostProcess[spec] {

@@ -27,6 +27,7 @@
 package builtin.kubernetes.KSV018
 
 import data.lib.kubernetes
+import data.lib.result
 import data.lib.utils
 
 default failLimitsMemory = false

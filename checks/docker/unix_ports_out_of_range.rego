@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS008
 
 import data.lib.docker
+import data.lib.result
 
 invalid_ports[output] {
 	expose := docker.expose[_]

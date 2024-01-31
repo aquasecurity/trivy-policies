@@ -27,6 +27,7 @@
 package builtin.kubernetes.KSV005
 
 import data.lib.kubernetes
+import data.lib.result
 
 default failCapsSysAdmin = false
 

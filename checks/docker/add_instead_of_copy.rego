@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS005
 
 import data.lib.docker
+import data.lib.result
 
 get_add[output] {
 	add := docker.add[_]

@@ -18,6 +18,7 @@
 package builtin.kubernetes.KCV0062
 
 import data.lib.kubernetes
+import data.lib.result
 
 validate_conf_permission(sp) := {"schedulerConfFilePermissions": violation} {
 	sp.kind == "NodeInfo"

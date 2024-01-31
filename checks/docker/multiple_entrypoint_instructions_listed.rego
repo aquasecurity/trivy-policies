@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS007
 
 import data.lib.docker
+import data.lib.result
 
 deny[res] {
 	entrypoints := docker.stage_entrypoints[stage]

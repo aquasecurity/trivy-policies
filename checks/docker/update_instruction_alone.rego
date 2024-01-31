@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS017
 
 import data.lib.docker
+import data.lib.result
 
 deny[res] {
 	run := docker.run[_]

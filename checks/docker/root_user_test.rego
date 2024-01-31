@@ -1,6 +1,7 @@
 package builtin.dockerfile.DS002
 
 import data.lib.docker
+import data.lib.result
 
 test_not_root_allowed {
 	r := deny with input as {"Stages": [{

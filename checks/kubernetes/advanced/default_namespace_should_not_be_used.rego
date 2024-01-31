@@ -27,6 +27,7 @@
 package builtin.kubernetes.KSV110
 
 import data.lib.kubernetes
+import data.lib.result
 
 default defaultNamespaceInUse = false
 

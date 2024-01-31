@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS010
 
 import data.lib.docker
+import data.lib.result
 
 has_sudo(commands) {
 	parts = split(commands, "&&")

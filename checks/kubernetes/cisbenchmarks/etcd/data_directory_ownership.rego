@@ -18,6 +18,7 @@
 package builtin.kubernetes.KCV0059
 
 import data.lib.kubernetes
+import data.lib.result
 
 validate_data_dir_ownership(sp) := {"etcdDataDirectoryOwnership": ownership} {
 	sp.kind == "NodeInfo"

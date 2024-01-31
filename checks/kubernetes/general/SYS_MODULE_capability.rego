@@ -27,6 +27,7 @@
 package builtin.kubernetes.KSV120
 
 import data.lib.kubernetes
+import data.lib.result
 
 default failCapsSysModule = false
 

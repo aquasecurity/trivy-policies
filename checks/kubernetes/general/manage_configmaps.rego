@@ -21,6 +21,7 @@
 package builtin.kubernetes.KSV049
 
 import data.lib.kubernetes
+import data.lib.result
 import data.lib.utils
 
 readVerbs := ["create", "update", "patch", "delete", "deletecollection", "impersonate", "*"]

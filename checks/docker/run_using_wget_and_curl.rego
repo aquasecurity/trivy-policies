@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS014
 
 import data.lib.docker
+import data.lib.result
 
 deny[res] {
 	wget := get_tool_usage(docker.run[_], "wget")

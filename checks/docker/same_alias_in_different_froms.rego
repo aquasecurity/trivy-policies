@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS012
 
 import data.lib.docker
+import data.lib.result
 
 get_duplicate_alias[output] {
 	output1 := get_aliased_name[_]

@@ -18,6 +18,7 @@
 package builtin.kubernetes.KCV0058
 
 import data.lib.kubernetes
+import data.lib.result
 
 validate_spec_permission(sp) := {"etcdDataDirectoryPermissions": permission} {
 	sp.kind == "NodeInfo"

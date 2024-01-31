@@ -18,6 +18,7 @@
 package builtin.kubernetes.KCV0053
 
 import data.lib.kubernetes
+import data.lib.result
 
 validate_spec_ownership(sp) := {"kubeSchedulerSpecFileOwnership": violation} {
 	sp.kind == "NodeInfo"

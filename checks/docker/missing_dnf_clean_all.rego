@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS019
 
 import data.lib.docker
+import data.lib.result
 
 install_regex := `(dnf install)|(dnf in)|(dnf reinstall)|(dnf rei)|(dnf install-n)|(dnf install-na)|(dnf install-nevra)`
 

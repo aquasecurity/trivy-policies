@@ -18,6 +18,7 @@
 package builtin.kubernetes.KCV0049
 
 import data.lib.kubernetes
+import data.lib.result
 
 validate_spec_ownership(sp) := {"kubeAPIServerSpecFileOwnership": violation} {
 	sp.kind == "NodeInfo"

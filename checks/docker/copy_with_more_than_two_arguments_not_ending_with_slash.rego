@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS011
 
 import data.lib.docker
+import data.lib.result
 
 get_copy_arg[output] {
 	copy := docker.copy[_]

@@ -16,6 +16,7 @@
 package builtin.dockerfile.DS024
 
 import data.lib.docker
+import data.lib.result
 
 get_apt_get_dist_upgrade[run] {
 	run := docker.run[_]

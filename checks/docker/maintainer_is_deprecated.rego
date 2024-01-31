@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS022
 
 import data.lib.docker
+import data.lib.result
 
 get_maintainer[mntnr] {
 	mntnr := input.Stages[_].Commands[_]

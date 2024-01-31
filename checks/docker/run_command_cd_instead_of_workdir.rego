@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS013
 
 import data.lib.docker
+import data.lib.result
 
 get_cd[output] {
 	run := docker.run[_]

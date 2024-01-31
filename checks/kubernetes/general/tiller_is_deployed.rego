@@ -16,6 +16,7 @@
 package builtin.kubernetes.KSV102
 
 import data.lib.kubernetes
+import data.lib.result
 
 # Get all containers and check kubernetes metadata for tiller
 tillerDeployed[container] {

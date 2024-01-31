@@ -27,6 +27,7 @@
 package builtin.kubernetes.KSV119
 
 import data.lib.kubernetes
+import data.lib.result
 
 default failCapsNetRaw = false
 

@@ -22,6 +22,7 @@
 package appshield.kubernetes.KSV122
 
 import data.lib.kubernetes
+import data.lib.result
 
 readRoleRefs := ["system:unauthenticated", "system:anonymous"]
 

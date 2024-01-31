@@ -18,6 +18,7 @@
 package builtin.kubernetes.KSV0108
 
 import data.lib.kubernetes
+import data.lib.result
 
 allowedIPs = set()
 

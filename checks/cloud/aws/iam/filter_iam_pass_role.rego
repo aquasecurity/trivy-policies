@@ -22,6 +22,8 @@
 #           provider: aws
 package builtin.aws.iam.aws0342
 
+import data.lib.result
+
 allows_permission(statements, permission, effect) {
 	statement := statements[_]
 	statement.Effect == effect

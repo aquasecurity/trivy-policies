@@ -27,6 +27,7 @@
 package builtin.kubernetes.KSV014
 
 import data.lib.kubernetes
+import data.lib.result
 
 default failReadOnlyRootFilesystem = false
 

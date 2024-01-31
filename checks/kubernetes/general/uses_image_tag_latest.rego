@@ -27,6 +27,7 @@
 package builtin.kubernetes.KSV013
 
 import data.lib.kubernetes
+import data.lib.result
 
 default checkUsingLatestTag = false
 

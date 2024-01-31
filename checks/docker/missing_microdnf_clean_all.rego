@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS027
 
 import data.lib.docker
+import data.lib.result
 
 install_regex := `(microdnf install)|(microdnf reinstall)`
 

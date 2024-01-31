@@ -21,6 +21,8 @@
 #           provider: aws
 package builtin.aws.rds.aws0343
 
+import data.lib.result
+
 deny[res] {
 	cluster := input.aws.rds.clusters[_]
 	not cluster.deletionprotection.value

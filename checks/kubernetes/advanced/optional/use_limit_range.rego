@@ -18,6 +18,7 @@
 package builtin.kubernetes.KSV039
 
 import data.lib.kubernetes
+import data.lib.result
 import data.lib.utils
 
 limitRangeConfigure {

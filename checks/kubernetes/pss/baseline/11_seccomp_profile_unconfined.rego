@@ -27,6 +27,7 @@
 package builtin.kubernetes.KSV104
 
 import data.lib.kubernetes
+import data.lib.result
 import data.lib.utils
 
 # getSeccompContainers returns all containers which have a seccomp

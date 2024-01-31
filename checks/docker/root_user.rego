@@ -18,6 +18,7 @@
 package builtin.dockerfile.DS002
 
 import data.lib.docker
+import data.lib.result
 
 # get_user returns all the usernames from
 # the USER command.

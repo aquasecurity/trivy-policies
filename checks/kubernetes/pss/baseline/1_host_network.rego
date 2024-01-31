@@ -27,6 +27,7 @@
 package builtin.kubernetes.KSV009
 
 import data.lib.kubernetes
+import data.lib.result
 
 default failHostNetwork = false
 

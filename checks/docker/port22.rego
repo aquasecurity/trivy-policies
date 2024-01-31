@@ -16,6 +16,7 @@
 package builtin.dockerfile.DS004
 
 import data.lib.docker
+import data.lib.result
 
 # deny_list contains the port numbers which needs to be denied.
 denied_ports := ["22", "22/tcp", "22/udp"]

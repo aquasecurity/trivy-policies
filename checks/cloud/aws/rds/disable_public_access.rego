@@ -26,6 +26,8 @@
 
 package builtin.aws.rds.aws0180
 
+import data.lib.result
+
 deny[res] {
 	instance := input.aws.rds.instances[_]
 	instance.publicaccess.value

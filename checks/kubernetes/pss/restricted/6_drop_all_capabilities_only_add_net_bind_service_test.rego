@@ -1,6 +1,7 @@
 package builtin.kubernetes.KSV106
 
 import data.lib.kubernetes
+import data.lib.result
 
 test_drop_all_allowed {
 	r := deny with input as {
