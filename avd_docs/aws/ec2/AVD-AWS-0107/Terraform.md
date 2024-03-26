@@ -9,6 +9,13 @@ Set a more restrictive cidr range
  
 ```
 ```hcl
+ resource "aws_security_group_rule" "another_good_example" {
+ 	type = "ingress"
+ 	cidr_blocks = ["1.2.3.4/24"]
+ }
+ 
+```
+```hcl
 resource "aws_security_group_rule" "allow_partner_rsync" {
   type              = "ingress"
   security_group_id = aws_security_group.….id

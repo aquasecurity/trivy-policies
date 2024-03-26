@@ -20,7 +20,7 @@ func TestCheckNoPublicIngressSgr(t *testing.T) {
 		expected bool
 	}{
 		{
-			name: "AWS VPC ingress security group rule with wildcard address",
+			name: "AWS VPC ingress security group rule with wildcard address (0.0.0.0/0)",
 			input: ec2.EC2{
 				SecurityGroups: []ec2.SecurityGroup{
 					{
@@ -37,6 +37,25 @@ func TestCheckNoPublicIngressSgr(t *testing.T) {
 				},
 			},
 			expected: true,
+		},
+		{
+			name: "AWS VPC ingress security group rule with public address (/24)",
+			input: ec2.EC2{
+				SecurityGroups: []ec2.SecurityGroup{
+					{
+						Metadata: trivyTypes.NewTestMetadata(),
+						IngressRules: []ec2.SecurityGroupRule{
+							{
+								Metadata: trivyTypes.NewTestMetadata(),
+								CIDRs: []trivyTypes.StringValue{
+									trivyTypes.String("1.2.3.4/24", trivyTypes.NewTestMetadata()),
+								},
+							},
+						},
+					},
+				},
+			},
+			expected: false,
 		},
 		{
 			name: "AWS VPC ingress security group rule with private address",

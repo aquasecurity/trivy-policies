@@ -47,7 +47,7 @@ var CheckNoPublicIngressSgr = rules.Register(
 			for _, rule := range group.IngressRules {
 				var failed bool
 				for _, block := range rule.CIDRs {
-					if cidr.IsPublic(block.Value()) && cidr.CountAddresses(block.Value()) > 1 {
+					if cidr.IsPublic(block.Value()) && (cidr.CountAddresses(block.Value()) == 255*255*255*255 || cidr.CountAddresses(block.Value()) == 0xffffffffffffffff) {
 						failed = true
 						results.Add(
 							"Security group rule allows ingress from public internet.",
