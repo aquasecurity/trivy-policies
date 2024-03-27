@@ -9,7 +9,7 @@ require (
 	github.com/liamg/memoryfs v1.6.0
 	github.com/open-policy-agent/opa v0.61.0
 	github.com/owenrumney/squealer v1.2.2
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.9.0
 	github.com/testcontainers/testcontainers-go v0.28.0
 	gopkg.in/yaml.v3 v3.0.1
 )
